@@ -6,3 +6,4 @@ evaluate
 git+https://github.com/huggingface/peft
 git+ssh://git@github.ibm.com/IBM-Research-AI/supertaskflow.git
 unitxt
+opendatasets
