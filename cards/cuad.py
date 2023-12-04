@@ -104,9 +104,8 @@ dataset_name = 'cuad'
 card = TaskCard(
         loader=LoadZipFromWeb(path='https://zenodo.org/records/4595826/files/CUAD_v1.zip?download=1',
                            data_files=['cuad.zip']),
-        preprocess_steps=[ # TODO use multilabel mapping here, and remove from above
+        preprocess_steps=[
             SplitRandomMix({'train': 'train[70%]', 'dev': 'train[10%]', 'test': 'train[20%]'}),
-#            MapInstanceValues(mappers={'labels': contract_nli_labels_dict})
         ],
         task=FormTask(
             inputs=["text"],

@@ -96,7 +96,7 @@ class LoadZipFromWeb(Loader):
                         text_to_classes[text].append(label)
                     examples_for_set = {**examples_for_set, **text_to_classes}
                 examples_for_set_as_list = list(examples_for_set.items())
-                examples_for_set_as_list = [(clean_text(x[0]), [contract_nli_labels_dict[l] for l in x[1]]) for x in
+                examples_for_set_as_list = [(clean_text(x[0]), x[1]) for x in
                                             examples_for_set_as_list]
                 examples_for_set_as_list = [x for x in examples_for_set_as_list if len(x[1]) > 0 and len(x[0].split()) > 4]
                 split = data_split
@@ -135,13 +135,12 @@ from pathlib import Path
 dataset_name = 'contract_nli'
 
 
-
 card = TaskCard(
         loader=LoadZipFromWeb(path='https://stanfordnlp.github.io/contract-nli/resources/',
                            data_files=['contract-nli.zip']),
-#        preprocess_steps=[ TODO use multilabel here, and remove from above
-#            MapInstanceValues(mappers={'labels': contract_nli_labels_dict})
-#        ],
+        preprocess_steps=[ 
+            MapInstanceValues(mappers={'labels': contract_nli_labels_dict}, process_every_value=True)
+        ],
         task=FormTask(
             inputs=["text"],
             outputs=["labels"], 
@@ -156,4 +155,5 @@ card = TaskCard(
 )
 
 add_to_catalog(artifact=card, name=f'cards.{dataset_name}',overwrite=True)
-# ds = load_dataset(f'unitxt/data', f'card=cards.{dataset_name},template_card_index=0')
+#ds = load_dataset(f'unitxt/data', f'card=cards.{dataset_name},template_card_index=0')
+#print(ds['dev']['additional_inputs'][0])
