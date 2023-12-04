@@ -30,13 +30,14 @@ The entry point for the experimental setup is `paper_pipeline.py`. This script r
 
 ### Example run
 
-`python pipeline.py flow=flan fold=0 seed=38 output_dir=flan_exp`: 
+By running the following command - `python pipeline.py flow=flan fold=0 seed=38 output_dir=flan_exp` - you will:
+
 * Fine-tune Flan-t5-XXL
 * Use fold 0 for evaluation (`reuters21578,
     claim_stance_topic,  unfair_tos, head_qa, banking77, ag_news` and `yahoo_answers_topics`) 
 * Train on the datasets from folds `1` and `2`
 * Use seed 38
-* The output will be written to `flan_exp`
+* Write the output to `flan_exp`
 
 ### Aggregate the results
 
