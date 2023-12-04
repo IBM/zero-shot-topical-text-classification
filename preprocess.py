@@ -7,7 +7,6 @@ import json
 from collections import Counter
 import os
 from datasets import load_dataset
-from config import ds_to_type # TODO do we need it?
 
 import importlib
 
@@ -87,7 +86,7 @@ def run_preprocess(output_dir, dataset_name):
         json.dump(
             {'name': dataset_name,
              'multilabel': multilabel,
-             'type': ds_to_type[dataset_name],
+             'type': 'topical',
              'labels': list(labels), 
              'sizes': sizes, 
              'counters': counters,

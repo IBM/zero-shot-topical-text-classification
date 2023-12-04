@@ -20,8 +20,6 @@ import json
 import ast
 import utils
 
-from config import paper_datasets, prompt_config
-
 PREDICT_WITH_GENERATIVE_MODELS_VERSION = "1.1"
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset_name', type=str, required=True, help='Name of the dataset')
@@ -46,16 +44,7 @@ __OUTPUT_DIR_ARG__ = "output_dir"
 __OUTPUTS__ = []
 __ARGPARSER__ = parser
 
-#
-# def bullets(args):
-#     return "\n".join(["- " + t.strip() for t in args['class_names'].split(",")])
-#
-#
-# def str_join_or(args):
-#     topics = ["\"" + c.strip() + "\"" for c in args['class_names'].split(",")]
-#     return ', '.join(topics[:-1]) + ' or ' + topics[-1]
-#
-#
+prompt_config = {"custom_option_multi_class_custom_option_multi_class": ("Classify the text into one of the categories: {class_names}.\ntext: {text}\ncategory: ", "Classify the text into one of the categories: {class_names}.\ntext: {text}\ncategory: "),}
 
 
 def simple_match_to_class_name(txt, class_names):

@@ -5,7 +5,6 @@ import argparse
 import os
 import numpy as np
 import utils
-import config
 
 JOINT_VERSION="1.5"
 
@@ -17,8 +16,6 @@ parser.add_argument('--version', type=str, required=True, help='version to updat
 parser.add_argument("--seed", type=int, default=42)
 parser.add_argument('--sampling_method', type=str, default='min_ds_dev', choices=['use_all', 'min_ds_dev', 'min_ds_dev_and_train', 'min_ds_train'],
         help='Method to sample data')
-parser.add_argument('--sample_size_additional_datasets', type=int, default=0, 
-        help='sample additional data')
 
 __OUTPUT_DIR_ARG__ = "output_dir"
 __OUTPUTS__ = [f'{split}.csv' for split in SPLIT_NAMES]
@@ -39,9 +36,9 @@ def read_dataset(input_dir):
 def main():
     args = parser.parse_args()
     utils.set_seed(args.seed)
-    run_joint(input_dirs=args.input_dirs, output_dir=args.output_dir, sampling_method=args.sampling_method, sample_size_additional_datasets=args.sample_size_additional_datasets)
+    run_joint(input_dirs=args.input_dirs, output_dir=args.output_dir, sampling_method=args.sampling_method)
 
-def run_joint(input_dirs, output_dir, sampling_method='min_ds_dev', sample_size_additional_datasets=0):
+def run_joint(input_dirs, output_dir, sampling_method='min_ds_dev'):
     
     os.makedirs(output_dir, exist_ok=True)
     input_dirs = input_dirs.split(',')
@@ -56,13 +53,6 @@ def run_joint(input_dirs, output_dir, sampling_method='min_ds_dev', sample_size_
             ds_names.append(metadata['name'])
             joint_metadata[metadata['name']] = metadata
 
-    if sample_size_additional_datasets > 0:
-        for i in range(len(datasets)):
-            name = ds_names[i]
-            if name in config.additional_datasets:
-                datasets[i]['train'] = datasets[i]['train'].sample(
-                    frac = sample_size_additional_datasets/1130510
-                )
     with (open(os.path.join(output_dir, "joint_metadata.json"), "tw")) as f:
         json.dump(joint_metadata, f)
 

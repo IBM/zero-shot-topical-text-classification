@@ -3,8 +3,6 @@ from collections import Counter
 import pandas as pd
 import argparse
 import os
-import logging
-import random
 import ast
 import utils
 import json
@@ -28,7 +26,7 @@ __ARGPARSER__ = parser
 
 def convert_df(df, sampling_column,  seed):
     df = df.sample(frac=1, random_state=seed) 
-    counter = Counter() # how mnay times we saw this class already
+    counter = Counter() # how many times we saw this class already
     labels_to_use = []
 
     for _, row in df.iterrows():
@@ -50,7 +48,6 @@ def convert_dataset(dataset_name, base_dir, sampling_dir, seed=42):
     return splits
 
 
-
 def run_sample_data(dataset_name, input_dir, output_dir, sampling_dir, limit_class_count, version):
         
     os.makedirs(output_dir, exist_ok=True)
@@ -61,8 +58,6 @@ def run_sample_data(dataset_name, input_dir, output_dir, sampling_dir, limit_cla
         df.to_csv(file, index=False)
         print(f'Wrote {file}')
 
-    df.to_csv(file, index=False)
-
     with open(os.path.join(input_dir, "metadata.json")) as f:
         metadata = json.load(f)
     with (open(os.path.join(output_dir, "metadata.json"), "tw")) as f:
@@ -72,7 +67,8 @@ def run_sample_data(dataset_name, input_dir, output_dir, sampling_dir, limit_cla
 def main():
     args = parser.parse_args()
     utils.set_seed(args.seed)
-    run_sample_data(dataset_name=args.dataset_name, input_dir=args.input_dir, output_dir=args.output_dir, sampling_dir=args.sampling_dir, limit_class_count=args.limit_class_count, version=args.version)
+    run_sample_data(dataset_name=args.dataset_name, input_dir=args.input_dir, output_dir=args.output_dir,
+                    sampling_dir=args.sampling_dir, limit_class_count=args.limit_class_count, version=args.version)
 
 
 if __name__ == '__main__':

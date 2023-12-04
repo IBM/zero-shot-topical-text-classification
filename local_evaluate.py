@@ -4,12 +4,11 @@ import pandas as pd
 import argparse
 import os
 from sklearn.metrics import classification_report
-import numpy as np
+
 import ast
 import sklearn
 import json
 import utils
-from collections import Counter, defaultdict
 
 
 EVALUATE_VERSION = "2.6"
@@ -39,6 +38,7 @@ def get_scores_in_binary_form(predicted_labels, predicted_scores, class_names):
     label_to_score = {x:y for x,y in zip(predicted_labels, predicted_scores)}
     labels = set(predicted_labels) # looking in a set is more efficient that looking in a list
     return [label_to_score[cls] for cls in class_names]
+
 
 def get_predictions_over_threshold(predictions, threshold):
     return [p for p, score in zip(predictions['labels'], predictions['scores']) if score > threshold] 

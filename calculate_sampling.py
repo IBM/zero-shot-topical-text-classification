@@ -1,7 +1,6 @@
 import pandas as pd
 import argparse
 import os
-from collections import Counter
 import json
 import utils
 

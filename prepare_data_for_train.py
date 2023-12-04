@@ -1,5 +1,4 @@
 import json
-from collections import Counter
 
 import pandas as pd
 import argparse
@@ -7,9 +6,6 @@ import os
 import ast
 import utils
 import random
-
-import numpy as np
-
 
 
 PREPARE_DATA_FOR_TRAIN_VERSION="1.6"
@@ -34,17 +30,18 @@ __OUTPUTS__ = ['train.csv', 'dev.csv']
 __ARGPARSER__ = parser
 
 
-
 def get_negative_examples(text, neg_classes, n_neg_examples, negative_label):
     neg_classes = neg_classes[:n_neg_examples]
     return [(text, neg_class, negative_label) for neg_class in neg_classes]
+
 
 def get_score(cls, predictions):
     labels_to_score = {label: score for label,score in zip(predictions["labels"], predictions["scores"])}
     return labels_to_score[cls]
 
+
 def get_negative_classes_by_hn_policy(method, all_class_names, texts, labels, data_name_for_sb=None, data_split_for_sb=None):
-    #random permutation of neg topics per example
+    # random permutation of neg topics per example
     all_class_names=list(all_class_names)
     neg_topics=[]
 
@@ -54,6 +51,7 @@ def get_negative_classes_by_hn_policy(method, all_class_names, texts, labels, da
         neg_topics.append(random.sample(neg_cls,len(neg_cls)))
     print(f"total {not_empty_hard_neg_count} / {len(texts)}")
     return neg_topics
+
 
 def convert_df(df, example_generation_method, balance_factor, dataset_name, split, positive_label, negative_label):
     
@@ -97,6 +95,7 @@ def main():
     args = parser.parse_args()
     utils.set_seed(args.seed)
     run_prepare_data_for_train(dataset_name=args.dataset_name, input_dir=args.input_dir, output_dir=args.output_dir, balance_factor=args.balance_factor, example_generation_method=args.example_generation_method, positive_label=args.positive_label, negative_label=args.negative_label)
+
 
 def run_prepare_data_for_train(dataset_name, input_dir, output_dir, example_generation_method='random', balance_factor=1, positive_label='ENTAILMENT', negative_label='CONTRADICTION'):    
     if os.path.exists(os.path.join(output_dir, 'dev.csv')): # let's use the previous results

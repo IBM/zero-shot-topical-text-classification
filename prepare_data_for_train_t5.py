@@ -1,13 +1,10 @@
 import json
-from collections import Counter
 
 import pandas as pd
 import argparse
 import os
 import ast
 import utils
-from predict_with_generative_models import format_prompts
-import numpy as np
 import random
 
 PREPARE_DATA_FOR_TRAIN_T5_VERSION = "1.0"
@@ -42,9 +39,6 @@ def get_score(cls, predictions):
 # TODO: add support for multi-label examples
 def convert_df(df, split, dataset_name, example_generation_method):
     list_of_tuples = []
-    all_classes = set(l for ll in df.label for l in ll)
-    mc_examples = 0
-    ml_examples = 0
     for txt, labels in zip(df['text'].tolist(), df['labels_to_use'].tolist()):
         if example_generation_method == 'filter_multi_label':
             if len(labels) == 0:
@@ -52,30 +46,12 @@ def convert_df(df, split, dataset_name, example_generation_method):
             if len(labels) > 1:
                 labels = labels[:1]
             list_of_tuples.append((txt, "mc", ", ".join(labels), dataset_name))
-        elif example_generation_method == "mixed":
-            if len(labels) != 1:
-                for label in labels:
-                    add_pairwise_examples(all_classes, dataset_name, label, labels, list_of_tuples, txt)
-                    ml_examples += 1
-            else:
-                multiclass_format = random.choice([True, False])
-                if multiclass_format:
-                    list_of_tuples.append((txt, 'mc', labels[0], dataset_name))
-                    mc_examples += 1
-                else: # pairwise example
-                    for label in labels:
-                        add_pairwise_examples(all_classes, dataset_name, label, labels, list_of_tuples, txt)
-                        ml_examples += 1
         else:
             list_of_tuples.append((txt, "mc", ", ".join(labels), dataset_name))
 
     print(f"{split}: created {len(list_of_tuples)} examples")
-    if ml_examples > 0:
-        print(f"{split}: created {mc_examples} mc examples")
-        print(f"{split}: created {ml_examples} ml examples")
 
     result_df = pd.DataFrame(list_of_tuples, columns=['text', 'class', 'label', 'dataset_name'])
-    # result_df['domain'] = ['dummy'] * len(result_df)
     return result_df
 
 
@@ -101,6 +77,7 @@ def main():
     args = parser.parse_args()
     utils.set_seed(args.seed)
     run_prepare_data_for_train_t5(dataset_name=args.dataset_name, input_dir=args.input_dir, output_dir=args.output_dir, example_generation_method=args.example_generation_method)
+
 
 def run_prepare_data_for_train_t5(dataset_name, input_dir, output_dir, example_generation_method='random'):
     if os.path.exists(os.path.join(output_dir, 'dev.csv')): # let's use the previous results
