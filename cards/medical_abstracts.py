@@ -63,8 +63,8 @@ def download_data( url_to_file :Dict[str, str]):
 
 
 download_data({
-    'https://raw.githubusercontent.com/sebischair/Medical-Abstracts-TC-Corpus/main/medical_tc_train.csv': '/tmp/ilyashn/train.csv',
-    'https://raw.githubusercontent.com/sebischair/Medical-Abstracts-TC-Corpus/main/medical_tc_test.csv': '/tmp/ilyashn/test.csv'
+    'https://raw.githubusercontent.com/sebischair/Medical-Abstracts-TC-Corpus/main/medical_tc_train.csv': '/tmp/train.csv',
+    'https://raw.githubusercontent.com/sebischair/Medical-Abstracts-TC-Corpus/main/medical_tc_test.csv': '/tmp/test.csv'
     })
     
 
@@ -108,3 +108,4 @@ card = TaskCard(
 
 add_to_catalog(artifact=card, name=f'cards.{dataset_name}',overwrite=True)
 #ds = load_dataset(f'unitxt/data', f'card=cards.{dataset_name},template_card_index=0')
+#print(ds['dev']['additional_inputs'][0])
