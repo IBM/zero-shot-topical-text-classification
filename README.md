@@ -35,7 +35,7 @@ By running the following command - `python pipeline.py flow=flan fold=0 seed=38 
 * Fine-tune Flan-t5-XXL
 * Use fold 0 for evaluation (`reuters21578,
     claim_stance_topic,  unfair_tos, head_qa, banking77, ag_news` and `yahoo_answers_topics`) 
-* Train on the datasets from folds `1` and `2`
+* Train on the datasets from folds 1 and 2
 * Use seed 38
 * Write the output to `flan_exp`
 
