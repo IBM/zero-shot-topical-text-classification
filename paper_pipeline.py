@@ -272,7 +272,7 @@ def main():
     if args.debug_mode:
         out_dir = 'debug_output'
         global folds
-        folds = [folds[0][0:2], folds[1][0:1]]
+        folds = [folds[0][1:2], folds[1][0:2]]
 
     datasets = [ds for fold in folds for ds in fold]
 
