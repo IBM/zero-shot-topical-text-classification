@@ -9,8 +9,6 @@ Using this repository you can:
 
 Note: In the paper we described TTC23, a collection of 23 topical text classification datasets. Due to legal restrictions, the repository allows access to 19 of them.
 
----
-
 ## Installation
 
 1. Clone the repository: `git clone git@github.com:IBM/zero-shot-classification-boost-with-self-training.git`.
