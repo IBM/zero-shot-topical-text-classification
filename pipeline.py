@@ -276,7 +276,6 @@ def main():
 
     datasets = [ds for fold in folds for ds in fold]
 
-    # TODO extract as separate process
     for ds in datasets:
         run_preprocess(output_dir=get_preprocess_path(out_dir, ds), dataset_name=ds)
 
@@ -292,7 +291,7 @@ def main():
     for ds in folds[fold_number]:
         predict(out_dir, flow, fold_number, seed, ds)
         evaluate(out_dir, flow, seed, ds)
-    # TODO make a separate script to aggregate the results.
+
     aggregate(out_dir, flow, folds[fold_number], fold_number, seed)
 
 
