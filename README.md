@@ -14,6 +14,7 @@ Note: In the paper we described TTC23, a collection of 23 topical text classific
 1. Clone the repository: `git clone git@github.com:IBM/zero-shot-classification-boost-with-self-training.git`.
 2. Create a conda environment: `conda create -n zero-shot-ttc python=3.10; conda activate zero-shot-ttc`.
 3. Install the project requirements: `pip install -r requirements.txt`.
+4. Create api-key using instuctions at https://christianjmills.com/posts/kaggle-obtain-api-key-tutorial/ and save kaggle.json in the local dir. We use opendatasets library to fetch news_category_classification_headline dataset.
 
 To run the experiments, you will need access to a single A100_80GB GPU.
 
@@ -30,7 +31,7 @@ The entry point for the experimental setup is `paper_pipeline.py`. This script r
 
 ### Example run
 
-By running the following command - `python pipeline.py flow=flan fold=0 seed=38 output_dir=flan_exp` - you will:
+By running the following command - `python pipeline.py --flow flan --fold 0 --seed 38 --output_dir flan_exp` - you will:
 
 * Fine-tune Flan-t5-XXL
 * Use fold 0 for evaluation (`reuters21578,
@@ -39,6 +40,35 @@ By running the following command - `python pipeline.py flow=flan fold=0 seed=38 
 * Use seed 38
 * Write the output to `flan_exp`
 
+### Run the experiments for other folds and seeds
+python pipeline.py --flow flan --fold 0 --seed 40 --output_dir flan_exp
+python pipeline.py --flow flan --fold 0 --seed 42 --output_dir flan_exp
+python pipeline.py --flow flan --fold 1 --seed 38 --output_dir flan_exp
+python pipeline.py --flow flan --fold 1 --seed 40 --output_dir flan_exp
+python pipeline.py --flow flan --fold 1 --seed 42 --output_dir flan_exp
+python pipeline.py --flow flan --fold 2 --seed 38 --output_dir flan_exp
+python pipeline.py --flow flan --fold 2 --seed 40 --output_dir flan_exp
+python pipeline.py --flow flan --fold 2 --seed 42 --output_dir flan_exp
+
+
+
 ### Aggregate the results
 
-TBA
+python aggregate.py --flow flan --output_dir flan_exp 
+
+### Caching
+
+There is a caching mehanism that prevents execution of some of the steps (e.g. processing datasets) twice. If the code changes it is recommended to remove the output_dir.
+
+## Run the experiments for deberta:
+python pipeline.py --flow deberta --fold 0 --seed 40 --output_dir deberta_exp
+python pipeline.py --flow deberta --fold 0 --seed 42 --output_dir deberta_exp
+python pipeline.py --flow deberta --fold 1 --seed 38 --output_dir deberta_exp
+python pipeline.py --flow deberta --fold 1 --seed 40 --output_dir deberta_exp
+python pipeline.py --flow deberta --fold 1 --seed 42 --output_dir deberta_exp
+python pipeline.py --flow deberta --fold 2 --seed 38 --output_dir deberta_exp
+python pipeline.py --flow deberta --fold 2 --seed 40 --output_dir deberta_exp
+python pipeline.py --flow deberta --fold 2 --seed 42 --output_dir deberta_exp
+
+python aggregate.py --flow deberta --output_dir deberta_exp 
+
