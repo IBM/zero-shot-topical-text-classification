@@ -1,9 +1,8 @@
 torch==2.0.0
 transformers==4.30.2
-pandas
-datasets
-evaluate
+pandas==2.1.3
+datasets==2.15.0
+evaluate==0.4.1
 git+https://github.com/huggingface/peft
-git+ssh://git@github.ibm.com/IBM-Research-AI/supertaskflow.git
-unitxt
-opendatasets
+unitxt==1.1.4
+opendatasets==0.1.22
