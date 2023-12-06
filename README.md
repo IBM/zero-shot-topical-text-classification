@@ -40,15 +40,25 @@ By running the following command - `python pipeline.py --flow flan --fold 0 --se
 * Use seed 38
 * Write the output to `flan_exp`
 
-### Run the experiments for other folds and seeds
-`python pipeline.py --flow flan --fold 0 --seed 40 --output_dir flan_exp;
-python pipeline.py --flow flan --fold 0 --seed 42 --output_dir flan_exp;
-python pipeline.py --flow flan --fold 1 --seed 38 --output_dir flan_exp;
-python pipeline.py --flow flan --fold 1 --seed 40 --output_dir flan_exp;
-python pipeline.py --flow flan --fold 1 --seed 42 --output_dir flan_exp;
-python pipeline.py --flow flan --fold 2 --seed 38 --output_dir flan_exp;
-python pipeline.py --flow flan --fold 2 --seed 40 --output_dir flan_exp;
-python pipeline.py --flow flan --fold 2 --seed 42 --output_dir flan_exp`
+### Run the experiments for remaining folds and seeds
+
+Here are the commands to execute to run the remaining 8 fold and seed combinations for the `flan` pipeline:
+
+`python pipeline.py --flow flan --fold 0 --seed 40 --output_dir flan_exp`
+
+`python pipeline.py --flow flan --fold 0 --seed 42 --output_dir flan_exp`
+
+`python pipeline.py --flow flan --fold 1 --seed 38 --output_dir flan_exp`
+
+`python pipeline.py --flow flan --fold 1 --seed 40 --output_dir flan_exp`
+
+`python pipeline.py --flow flan --fold 1 --seed 42 --output_dir flan_exp`
+
+`python pipeline.py --flow flan --fold 2 --seed 38 --output_dir flan_exp`
+
+`python pipeline.py --flow flan --fold 2 --seed 40 --output_dir flan_exp`
+
+`python pipeline.py --flow flan --fold 2 --seed 42 --output_dir flan_exp`
 
 
 
