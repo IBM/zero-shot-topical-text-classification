@@ -60,8 +60,6 @@ Here are the commands to execute to run the remaining 8 fold and seed combinatio
 
 `python pipeline.py --flow flan --fold 2 --seed 42 --output_dir flan_exp`
 
-
-
 ### Aggregate the results
 
 After all runs have completed, you can use the following script to aggregate them:
@@ -72,7 +70,7 @@ After all runs have completed, you can use the following script to aggregate the
 
 There is a caching mehanism that prevents execution of some of the steps (e.g. processing datasets) twice. If the code changes it is recommended to remove the output_dir.
 
-## Run the experiment for fine-tuning DeBERTa-Large-mnli:
+### Run the experiment for fine-tuning DeBERTa-Large-mnli:
 
 `python pipeline.py --flow deberta --fold 0 --seed 40 --output_dir deberta_exp`
 
@@ -92,5 +90,9 @@ There is a caching mehanism that prevents execution of some of the steps (e.g. p
 
 And accordingly, to aggregate the results run the following:
 
-python aggregate.py --flow deberta --output_dir deberta_exp 
+python aggregate.py --flow deberta --output_dir deberta_exp
+
+## Questions
+
+If you have any questions, you are welcome to send us an email: avishaig@il.ibm.com.
 
