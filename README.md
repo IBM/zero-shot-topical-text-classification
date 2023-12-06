@@ -66,10 +66,6 @@ After all runs have completed, you can use the following script to aggregate the
 
 `python aggregate.py --flow flan --output_dir flan_exp`
 
-### Caching
-
-There is a caching mehanism that prevents execution of some of the steps (e.g. processing datasets) twice. If the code changes it is recommended to remove the output_dir.
-
 ### Run the experiment for fine-tuning DeBERTa-Large-mnli:
 
 `python pipeline.py --flow deberta --fold 0 --seed 40 --output_dir deberta_exp`
@@ -91,6 +87,10 @@ There is a caching mehanism that prevents execution of some of the steps (e.g. p
 And accordingly, to aggregate the results run the following:
 
 python aggregate.py --flow deberta --output_dir deberta_exp
+
+### Caching
+
+There is a caching mehanism that prevents execution of some of the steps (e.g. processing datasets) twice. If the code changes it is recommended to remove the output_dir.
 
 ## Reference
 
