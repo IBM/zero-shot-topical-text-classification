@@ -14,7 +14,7 @@ Note: In the paper we described TTC23, a collection of 23 topical text classific
 1. Clone the repository: `git clone git@github.com:IBM/zero-shot-classification-boost-with-self-training.git`.
 2. Create a conda environment: `conda create -n zero-shot-ttc python=3.10; conda activate zero-shot-ttc`.
 3. Install the project requirements: `pip install -r requirements.txt`.
-4. Create api-key using instuctions at https://christianjmills.com/posts/kaggle-obtain-api-key-tutorial/ and save kaggle.json in the local dir. We use opendatasets library to fetch the `News cateogry classification dataset`.
+4. Create api-key using instuctions at https://christianjmills.com/posts/kaggle-obtain-api-key-tutorial/ and save kaggle.json in the local dir. We use opendatasets library to fetch the `News cateogry classification`.
 
 To run the experiments, you will need access to a single A100_80GB GPU.
 
