@@ -21,6 +21,8 @@ from predict_with_generative_models import run_predict_with_generative_models
 from joint import run_joint
 from local_evaluate import EVALUATE_VERSION, run_evaluation
 
+logging.basicConfig(level=logging.INFO)
+
 LIMIT_CLASS_COUNT = 100
 DEBERTA_HYPOTHESIS_TEMPLATE = "'This text is about {}.'"
 MULTI_CLASS_FLAN_PROMPT_TYPE = 'custom_option_multi_class_custom_option_multi_class'
