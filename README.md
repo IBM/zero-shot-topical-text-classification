@@ -1,5 +1,5 @@
 # Zero-shot Topical Text Classification
-Code to reproduce experiments from the paper [Zero-shot Topical Text Classification with LLMs - an Experimental Study](https://github.com/IBM/zero-shot-topical-text-classification) (EMNLP, 2023).
+Code to reproduce experiments from the paper [Zero-shot Topical Text Classification with LLMs - an Experimental Study]([https://github.com/IBM/zero-shot-topical-text-classification](https://aclanthology.org/2023.findings-emnlp.647.pdf)(EMNLP, 2023).
 
 Using this repository you can:
 
