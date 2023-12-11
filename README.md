@@ -103,7 +103,7 @@ There is a caching mehanism that prevents execution of some of the steps (e.g. p
 
 ## Reference
 
-If you refer to this work in a paper please cite:
+If you refer to this work please cite:
 
 ```
 @inproceedings{gretz-etal-2023-zero,
