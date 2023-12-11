@@ -1,6 +1,6 @@
 # Zero-shot Topical Text Classification
 
-This repostiroy contains code to reproduce experiments from the paper [Zero-shot Topical Text Classification with LLMs - an Experimental Study](https://aclanthology.org/2023.findings-emnlp.647.pdf)(EMNLP, 2023).
+This repostiroy contains code to reproduce experiments from the paper [Zero-shot Topical Text Classification with LLMs - an Experimental Study](https://aclanthology.org/2023.findings-emnlp.647.pdf) (EMNLP, 2023).
 
 The paper evaluates several off-the-shelf models on a diverse collection of datasets that handle topical text classification tasks. Furthermore, the paper shows how additional fine-tuning dedicated to topical text classification can further improve the zero-shot capabilities of LLMs such as the Flan-t5-XXL on this task.
 
