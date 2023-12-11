@@ -18,11 +18,11 @@ Note: In the paper we described TTC23, a collection of 23 topical text classific
 
 To run the experiments, you will need access to a single A100_80GB GPU.
 
-## Fine-tune DeBERTa-Large and Flan-t5-XXL
+## Reproduce paper experiments
 
-This step describes how to fine-tune DeBERTa-Large-mnli and Flan-t5-XXL similarly to what was done in the paper. That is, we split 19 datasets to 3 folds, train each model on a combination of 2 folds and evaluate on the datasets in the left-out fold.
+This step describes how to fine-tune DeBERTa-Large-mnli and Flan-t5-XXL similarly to what was done in the paper. That is, we split 19 datasets to 3 folds, train each model on a combination of 2 folds and evaluate on the datasets in the left-out fold. We do this for 3 seeds, so overall there are 18 training processes to complete (2 models, 3 folds, 3 feeds).
 
-The entry point for the experimental setup is `paper_pipeline.py`. This script runs a single experiment pipeline end-to-end. It supports the following arguments:
+The entry point for the experimental setup is `paper_pipeline.py`. This script runs a single experiment pipeline end-to-end (that is, one model, fold and seed). It supports the following arguments:
 
 * `flow`: whether to fine-tune DeBERTa-Large-mnli (`deberta`) or Flan-t5-XXL (`flan`).
 * `fold`: the index of the evaluation fold (`0`, `1` or `2`). The index refers to the list of 3 folds that are set in the `folds` variable (line 31). The datasets in the remaining folds will be used for training.
