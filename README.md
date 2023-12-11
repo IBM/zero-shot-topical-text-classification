@@ -98,5 +98,5 @@ TBA
 
 ## License
 
-This work is released under the Apache 2.0 license. The full text of the license can be found in [LICENSE](LICENSE).
+This codebase is released under the Apache 2.0 license. The full text of the license can be found in [LICENSE](LICENSE). Note, models and datasets associated with this work have separate licenses.
 
