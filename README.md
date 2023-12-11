@@ -1,4 +1,5 @@
 # Zero-shot Topical Text Classification
+
 Code to reproduce experiments from the paper [Zero-shot Topical Text Classification with LLMs - an Experimental Study]([https://github.com/IBM/zero-shot-topical-text-classification](https://aclanthology.org/2023.findings-emnlp.647.pdf)(EMNLP, 2023).
 
 Using this repository you can:
@@ -8,6 +9,15 @@ Using this repository you can:
 3. Evaluate the models.
 
 Note: In the paper we described TTC23, a collection of 23 topical text classification datasets. Due to legal restrictions, the repository allows access to 19 of them.
+
+## Introduction
+
+The paper [Zero-shot Topical Text Classification with LLMs - an Experimental Study]([https://github.com/IBM/zero-shot-topical-text-classification](https://aclanthology.org/2023.findings-emnlp.647.pdf) evaluates several off-the-shelf models on a diverse collection of datasets that handle topical text classification tasks. Furthermore, the paper shows how additional fine-tuning can further improve the zero-shot capabilities of LLMs such as the Flan-t5-XXL.
+
+To use our work, you can either:
+
+1. Download our Flan-t5-XXL model - details TBA.
+2. Build your own models using the instructions below.
 
 ## Installation
 
@@ -94,7 +104,36 @@ There is a caching mehanism that prevents execution of some of the steps (e.g. p
 
 ## Reference
 
-TBA
+If you refer to this work in a paper please cite:
+
+```
+@inproceedings{gretz-etal-2023-zero,
+    title = "Zero-shot Topical Text Classification with {LLM}s - an Experimental Study",
+    author = "Gretz, Shai  and
+      Halfon, Alon  and
+      Shnayderman, Ilya  and
+      Toledo-Ronen, Orith  and
+      Spector, Artem  and
+      Dankin, Lena  and
+      Katsis, Yannis  and
+      Arviv, Ofir  and
+      Katz, Yoav  and
+      Slonim, Noam  and
+      Ein-Dor, Liat",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-emnlp.647",
+    pages = "9647--9676",
+    abstract = "Topical Text Classification (TTC) is an ancient, yet timely research area in natural language processing, with many practical applications. The recent dramatic advancements in large LMs raise the question of how well these models can perform in this task in a zero-shot scenario. Here, we share a first comprehensive study, comparing the zero-shot performance of a variety of LMs over TTC23, a large benchmark collection of 23 publicly available TTC datasets, covering a wide range of domains and styles. In addition, we leverage this new TTC benchmark to create LMs that are specialized in TTC, by fine-tuning these LMs over a subset of the datasets and evaluating their performance over the remaining, held-out datasets. We show that the TTC-specialized LMs obtain the top performance on our benchmark, by a significant margin. Our code and model are made available for the community. We hope that the results presented in this work will serve as a useful guide for practitioners interested in topical text classification.",
+}
+```
+
 
 ## License
 
