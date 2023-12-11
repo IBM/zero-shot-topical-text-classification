@@ -1,23 +1,23 @@
 # Zero-shot Topical Text Classification
 
-Code to reproduce experiments from the paper [Zero-shot Topical Text Classification with LLMs - an Experimental Study]([https://github.com/IBM/zero-shot-topical-text-classification](https://aclanthology.org/2023.findings-emnlp.647.pdf)(EMNLP, 2023).
+This repostiroy contains code to reproduce experiments from the paper [Zero-shot Topical Text Classification with LLMs - an Experimental Study](https://aclanthology.org/2023.findings-emnlp.647.pdf)(EMNLP, 2023).
+
+The paper evaluates several off-the-shelf models on a diverse collection of datasets that handle topical text classification tasks. Furthermore, the paper shows how additional fine-tuning dedicated to topical text classification can further improve the zero-shot capabilities of LLMs such as the Flan-t5-XXL on this task.
+
+To use our work, you can either:
+
+1. Download our Flan-t5-XXL model - details TBA.
+2. Build your own models using the instructions below.
+
+Note: In the paper we described TTC23, a collection of 23 topical text classification datasets. Due to legal restrictions, the repository allows access to 19 of them.
+
+## Introduction
 
 Using this repository you can:
 
 1. Download the datasets used in the paper.
 2. Fine-tune DeBERTa-Large-mnli and Flan-t5-XXL on the datasets in the same manner that was described in the paper.
 3. Evaluate the models.
-
-Note: In the paper we described TTC23, a collection of 23 topical text classification datasets. Due to legal restrictions, the repository allows access to 19 of them.
-
-## Introduction
-
-The paper [Zero-shot Topical Text Classification with LLMs - an Experimental Study]([https://github.com/IBM/zero-shot-topical-text-classification](https://aclanthology.org/2023.findings-emnlp.647.pdf) evaluates several off-the-shelf models on a diverse collection of datasets that handle topical text classification tasks. Furthermore, the paper shows how additional fine-tuning can further improve the zero-shot capabilities of LLMs such as the Flan-t5-XXL.
-
-To use our work, you can either:
-
-1. Download our Flan-t5-XXL model - details TBA.
-2. Build your own models using the instructions below.
 
 ## Installation
 
@@ -44,8 +44,7 @@ The entry point for the experimental setup is `paper_pipeline.py`. This script r
 By running the following command - `python pipeline.py --flow flan --fold 0 --seed 38 --output_dir flan_exp` - you will:
 
 * Fine-tune Flan-t5-XXL
-* Use fold 0 for evaluation (`reuters21578,
-    claim_stance_topic,  unfair_tos, head_qa, banking77, ag_news` and `yahoo_answers_topics`) 
+* Evaluate fold 0 (`reuters21578, claim_stance_topic,  unfair_tos, head_qa, banking77, ag_news` and `yahoo_answers_topics`) 
 * Train on the datasets from folds 1 and 2
 * Use seed 38
 * Write the output to `flan_exp`
